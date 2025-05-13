@@ -1,0 +1,12 @@
+[project]
+name = "pytram"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aio-pika>=9.5.5",
+    "aiosqlite>=0.21.0",
+    "pyfaulttolerance>=0.1.2",
+    "sqlmodel>=0.0.24",
+]
