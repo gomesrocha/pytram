@@ -3,7 +3,9 @@ from pytram.saga.step import SagaStep
 from pytram.saga.instance import SagaInstance
 from pytram.persistence.memory import InMemorySagaRepository
 from pytram.messaging.base import BrokerAdapter
-from pyfaulttolerance import retry, circuit_breaker
+from pyfaulttolerance.retry_async import retry_async
+from pyfaulttolerance.circuit_breaker import circuit_breaker_async
+from pyfaulttolerance.circuit_breaker import circuit_breaker
 
 class SagaOrchestrator:
     def __init__(self, name: str, steps: List[SagaStep], broker: BrokerAdapter, repo: InMemorySagaRepository):
@@ -12,8 +14,8 @@ class SagaOrchestrator:
         self.broker = broker
         self.repo = repo
 
-    @retry()
-    @circuit_breaker()
+    @retry_async()
+    @circuit_breaker_async()
     async def start(self, saga_id: str, data: dict):
         instance = SagaInstance(
             id=saga_id,
