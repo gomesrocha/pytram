@@ -1,5 +1,5 @@
 [project]
-name = "pytram"
+name = "pytram-saga"
 version = "0.2.9"
 description = "Saga orchestration framework inspired by Eventuate Tram"
 readme = "README.md"
