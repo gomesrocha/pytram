@@ -1,6 +1,6 @@
 [project]
 name = "pytram"
-version = "0.2.6"
+version = "0.2.8"
 description = "Saga orchestration framework inspired by Eventuate Tram"
 readme = "README.md"
 requires-python = ">=3.13"
