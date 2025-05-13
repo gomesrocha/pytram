@@ -3,7 +3,7 @@ name = "pytram"
 version = "0.1.1"
 description = "Saga orchestration framework inspired by Eventuate Tram"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.13"
 dependencies = [
     "aio-pika>=9.5.5",
     "aiosqlite>=0.21.0",
