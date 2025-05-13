@@ -25,7 +25,13 @@ class RabbitMQAdapter(BrokerAdapter):
         Publica uma mensagem em JSON para a fila especificada.
         """
         await self.channel.default_exchange.publish(
-            aio_pika.Message(body=json.dumps(message).encode()),
+            aio_pika.Message(
+                body=json.dumps({
+                    "kind": "command",
+                    "type": destination,
+                    "payload": message
+                }).encode()
+            ),
             routing_key=destination
         )
 
