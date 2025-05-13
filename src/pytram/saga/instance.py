@@ -1,7 +1,7 @@
 from typing import Optional
 from sqlmodel import SQLModel, Field
 
-class SagaInstance(SQLModel, table=True):
+class SagaInstance(SQLModel):
     id: str = Field(primary_key=True)
     saga_name: str
     state: str
