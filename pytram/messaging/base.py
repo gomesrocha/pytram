@@ -3,7 +3,7 @@ from typing import Callable, Any
 
 class BrokerAdapter(ABC):
     """
-    Interface base para adaptadores de mensageria.
+    Interface padrão para adaptadores de mensageria
     """
 
     @abstractmethod

@@ -5,7 +5,7 @@ from .base import BrokerAdapter
 
 class RabbitMQAdapter(BrokerAdapter):
     """
-    Implementação do BrokerAdapter usando RabbitMQ e aio-pika.
+    Implementação do BrokerAdapter usando RabbitMQ com o aio-pika.
     """
 
     def __init__(self, url: str):
@@ -14,16 +14,10 @@ class RabbitMQAdapter(BrokerAdapter):
         self.channel = None
 
     async def connect(self):
-        """
-        Conecta ao servidor RabbitMQ e inicializa o canal.
-        """
         self.connection = await aio_pika.connect_robust(self.url)
         self.channel = await self.connection.channel()
 
     async def publish(self, destination: str, message: dict):
-        """
-        Publica uma mensagem em JSON para a fila especificada.
-        """
         await self.channel.default_exchange.publish(
             aio_pika.Message(
                 body=json.dumps({
@@ -36,9 +30,6 @@ class RabbitMQAdapter(BrokerAdapter):
         )
 
     async def subscribe(self, queue: str, handler: Callable[[dict], Any]):
-        """
-        Inscreve-se em uma fila e processa mensagens com o handler fornecido.
-        """
         q = await self.channel.declare_queue(queue, durable=True)
 
         async def callback(message: aio_pika.IncomingMessage):
