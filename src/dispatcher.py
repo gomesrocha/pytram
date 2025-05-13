@@ -1,5 +1,5 @@
-from src.registry.command import get_command_handler
-from src.registry.event import get_event_handler
+from pytram.registry.command import get_command_handler
+from pytram.registry.event import get_event_handler
 
 async def dispatch_message(message: dict):
     kind = message.get("kind")  # "command" ou "event"

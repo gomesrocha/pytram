@@ -1,9 +1,9 @@
 [project]
 name = "pytram"
 version = "0.1.0"
-description = "Add your description here"
+description = "Saga orchestration framework inspired by Eventuate Tram for Python microservices"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.8"
 dependencies = [
     "aio-pika>=9.5.5",
     "aiosqlite>=0.21.0",
@@ -14,20 +14,12 @@ dependencies = [
     "wheel>=0.45.1",
 ]
 
-[dependency-groups]
-dev = [
-    "build>=1.2.2.post1",
-    "setuptools>=80.4.0",
-    "twine>=6.1.0",
-    "wheel>=0.45.1",
-]
-
-
-[tool.pytest.ini_options]
-pythonpath = ["."]
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["src"]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
