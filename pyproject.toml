@@ -8,5 +8,8 @@ dependencies = [
     "aio-pika>=9.5.5",
     "aiosqlite>=0.21.0",
     "pyfaulttolerance>=0.1.2",
+    "setuptools>=80.4.0",
     "sqlmodel>=0.0.24",
+    "twine>=6.1.0",
+    "wheel>=0.45.1",
 ]
