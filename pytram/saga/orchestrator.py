@@ -5,6 +5,8 @@ from pytram.persistence.memory import InMemorySagaRepository
 from pytram.messaging.base import BrokerAdapter
 from pyfaulttolerance.retry_async import retry_async
 from pyfaulttolerance.circuit_breaker import CircuitBreaker
+import logging
+logger = logging.getLogger(__name__)
 
 class SagaOrchestrator:
     def __init__(self, name: str, steps: List[SagaStep], broker: BrokerAdapter, repo: InMemorySagaRepository):
@@ -39,6 +41,7 @@ class SagaOrchestrator:
             await self.repo.update(instance)
             await self._execute_step(instance)
         except Exception as e:
+            logger.error(f"Erro ao executar o passo {step.command}: {e}")
             if step.compensation:
                 await self._compensate(instance)
             instance.state = "FAILED"
