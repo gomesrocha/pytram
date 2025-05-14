@@ -1,10 +1,10 @@
 import asyncio
-from src.saga.orchestrator import SagaOrchestrator
-from src.saga.step import SagaStep
-from src.persistence.memory import InMemorySagaRepository
-from src.messaging.rabbitmq import RabbitMQAdapter
+from pytram.saga.orchestrator import SagaOrchestrator
+from pytram.saga.step import SagaStep
+from pytram.persistence.memory import InMemorySagaRepository
+from pytram.messaging.rabbitmq import RabbitMQAdapter
 from dispatcher import dispatch_message
-from src.registry.command import command_handler
+from pytram.registry.command import command_handler
 
 @command_handler("CreateOrder")
 async def create_order(data: dict):
